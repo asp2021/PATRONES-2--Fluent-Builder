@@ -6,13 +6,15 @@ namespace Builder
     {
         static void Main(string[] args)
         {
-            var sandwich = new SandwichAssembly(new CheeseBurger());
-            sandwich.Assemble();
+            var sandwich = new SandwichBuilder()
+                .WithMeat()
+                .WithCheeseCheddar()
+                .WithCondimentsMayoMustard();
 
-            Console.WriteLine("PATRONES - BUILDER" + '\n');
-            Console.WriteLine("Encargado de construir objetos complejos y utiliza un mecanismo de separar la representacion del objeto con su creacion" + '\n');
+            Console.WriteLine("PATRONES - FLUENT BUILDER" + '\n');
+            Console.WriteLine("Tiene una implementación más fluida que la forma tradicional. Solamente necesitamos un Builder." + '\n');
 
-            Console.WriteLine( $"{sandwich.GetSandwich.Bread} {sandwich.GetSandwich.Cheese} {sandwich.GetSandwich.Protein} {sandwich.GetSandwich.Veggies} {sandwich.GetSandwich.Condiments}");
+            Console.WriteLine( $"{sandwich.sandwich.Protein} , {sandwich.sandwich.Cheese} , {sandwich.sandwich.Condiments}");
             Console.ReadLine();
         }
     }
